@@ -1,16 +1,16 @@
 <template>
   <div class="finger-demo">
     <img class="finger-demo-img" src="../../../assets/logo.png" :style="imgStyle" 
-    	v-tap="tap"
-    	v-singleTap="singleTap"
-    	v-longTap="longTap"
-    	v-doubleTap="doubleTap"
-    	v-pressMove="pressMove"
-    	v-swipe="swipe"
-    	v-rotate="rotate" 
-    	v-multipointStart="multipointStart" 
-    	v-multipointEnd="multipointEnd"
-    	v-pinch="pinch"/>
+    	v-tap="{methods: tap, arg: {index:1,item:'tap'}}"
+    	v-singleTap="{methods: singleTap, arg: {index:2,item:'singleTap'}}"
+    	v-longTap="{methods: longTap, arg: {index:3,item:'longTap'}}"
+    	v-doubleTap="{methods: doubleTap, arg: {index:4,item:'doubleTap'}}"
+    	v-pressMove="{methods: pressMove, arg: {index:5,item:'pressMove'}}"
+    	v-swipe="{methods: swipe, arg: {index:6,item:'swipe'}}"
+    	v-rotate="{methods: rotate, arg: {index:7,item:'rotate'}}" 
+    	v-multipointStart="{methods: multipointStart, arg: {index:8,item:'multipointStart'}}" 
+    	v-multipointEnd="{methods: multipointEnd, arg: {index:9,item:'multipointEnd'}}"
+    	v-pinch="{methods: pinch, arg: arg}"/>
     <div>{{ msg }}</div>
   </div>
 </template>
@@ -23,7 +23,8 @@ export default {
       scale: 1,
       angle: 0,
       initScale: 1,
-      msg: ''
+      msg: '',
+      arg: {index: 10, item: 'pinch'}
     }
   },
   computed: {
@@ -36,50 +37,59 @@ export default {
     }
   },
   methods: {
-    tap (e) {
+    tap (e, args) {
       var self = this
       self.msg = 'tap'
+      console.log('tap index:' + args.index + 'item:' + args.item)
     },
-    singleTap (e) {
+    singleTap (e, args) {
       var self = this
       self.msg = 'singleTap'
+      console.log('tap index:' + args.index + 'item:' + args.item)
     },
-    longTap (e) {
+    longTap (e, args) {
       var self = this
       self.msg = 'longTap'
+      console.log('tap index:' + args.index + 'item:' + args.item)
     },
-    doubleTap (e) {
+    doubleTap (e, args) {
       var self = this
       self.msg = 'doubleTap'
+      console.log('tap index:' + args.index + 'item:' + args.item)
     },
-    rotate (e) {
+    rotate (e, args) {
       var self = this
       self.msg = 'rotate'
       self.angle += e.angle
+      console.log('tap index:' + args.index + 'item:' + args.item)
     },
-    pressMove (e) {
+    pressMove (e, args) {
       var self = this
       self.msg = 'pressMove'
       self.left += e.deltaX
       self.top += e.deltaY
+      console.log('tap index:' + args.index + 'item:' + args.item)
     },
-    swipe (e) {
+    swipe (e, args) {
       var self = this
       self.msg = 'swipe'
+      console.log('tap index:' + args.index + 'item:' + args.item)
     },
-    multipointStart: function (e) {
+    multipointStart: function (e, args) {
       var self = this
       self.msg = 'multipointStart'
       self.initScale = self.scale
+      console.log('tap index:' + args.index + 'item:' + args.item)
     },
-    multipointEnd: function (e) {
+    multipointEnd: function (e, args) {
       var self = this
       self.msg = 'multipointEnd'
     },
-    pinch (e) {
+    pinch (e, args) {
       var self = this
       self.msg = 'pinch'
       self.scale = self.initScale * e.scale
+      console.log('tap index:' + args.index + 'item:' + args.item)
     }
   }
 }

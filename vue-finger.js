@@ -181,8 +181,10 @@ vueFinger.install = function (Vue, options) {
   // 自定义指令
   Vue.directive('tap', {
     bind (el, binding, vnode, oldVnode) {
+      var args = binding.value.arg || {}
+      args.el = el
       self.config.tap = function (e) {
-        binding.value.call(binding.value, e, el)
+        binding.value.methods.call(binding.value.methods, e, args)
       }
       el.addEventListener('touchstart', self.start, false)
       el.addEventListener('touchmove', self.move, false)
@@ -192,8 +194,10 @@ vueFinger.install = function (Vue, options) {
   })
   Vue.directive('singleTap', {
     bind (el, binding, vnode, oldVnode) {
+      var args = binding.value.arg || {}
+      args.el = el
       self.config.singleTap = function (e) {
-        binding.value.call(binding.value, e, el)
+        binding.value.methods.call(binding.value.methods, e, args)
       }
       el.addEventListener('touchstart', self.start, false)
       el.addEventListener('touchmove', self.move, false)
@@ -203,8 +207,10 @@ vueFinger.install = function (Vue, options) {
   })
   Vue.directive('longTap', {
     bind (el, binding, vnode, oldVnode) {
+      var args = binding.value.arg || {}
+      args.el = el
       self.config.longTap = function (e) {
-        binding.value.call(binding.value, e, el)
+        binding.value.methods.call(binding.value.methods, e, args)
       }
       el.addEventListener('touchstart', self.start, false)
       el.addEventListener('touchmove', self.move, false)
@@ -214,8 +220,10 @@ vueFinger.install = function (Vue, options) {
   })
   Vue.directive('doubleTap', {
     bind (el, binding, vnode, oldVnode) {
+      var args = binding.value.arg || {}
+      args.el = el
       self.config.doubleTap = function (e) {
-        binding.value.call(binding.value, e, el)
+        binding.value.methods.call(binding.value.methods, e, args)
       }
       el.addEventListener('touchstart', self.start, false)
       el.addEventListener('touchmove', self.move, false)
@@ -225,8 +233,10 @@ vueFinger.install = function (Vue, options) {
   })
   Vue.directive('pressMove', {
     bind (el, binding, vnode, oldVnode) {
+      var args = binding.value.arg || {}
+      args.el = el
       self.config.pressMove = function (e) {
-        binding.value.call(binding.value, e, el)
+        binding.value.methods.call(binding.value.methods, e, args)
       }
       el.addEventListener('touchstart', self.start, false)
       el.addEventListener('touchmove', self.move, false)
@@ -236,8 +246,10 @@ vueFinger.install = function (Vue, options) {
   })
   Vue.directive('multipointStart', {
     bind (el, binding, vnode, oldVnode) {
+      var args = binding.value.arg || {}
+      args.el = el
       self.config.multipointStart = function (e) {
-        binding.value.call(binding.value, e, el)
+        binding.value.methods.call(binding.value.methods, e, args)
       }
       el.addEventListener('touchstart', self.start, false)
       el.addEventListener('touchmove', self.move, false)
@@ -247,8 +259,10 @@ vueFinger.install = function (Vue, options) {
   })
   Vue.directive('multipointEnd', {
     bind (el, binding, vnode, oldVnode) {
+      var args = binding.value.arg || {}
+      args.el = el
       self.config.multipointEnd = function (e) {
-        binding.value.call(binding.value, e, el)
+        binding.value.methods.call(binding.value.methods, e, args)
       }
       el.addEventListener('touchstart', self.start, false)
       el.addEventListener('touchmove', self.move, false)
@@ -258,8 +272,10 @@ vueFinger.install = function (Vue, options) {
   })
   Vue.directive('swipe', {
     bind (el, binding, vnode, oldVnode) {
+      var args = binding.value.arg || {}
+      args.el = el
       self.config.swipe = function (e) {
-        binding.value.call(binding.value, e, el)
+        binding.value.methods.call(binding.value.methods, e, args)
       }
       el.addEventListener('touchstart', self.start, false)
       el.addEventListener('touchmove', self.move, false)
@@ -269,8 +285,10 @@ vueFinger.install = function (Vue, options) {
   })
   Vue.directive('pinch', {
     bind (el, binding, vnode, oldVnode) {
+      var args = binding.value.arg || {}
+      args.el = el
       self.config.pinch = function (e) {
-        binding.value.call(binding.value, e, el)
+        binding.value.methods.call(binding.value.methods, e, args)
       }
       el.addEventListener('touchstart', self.start, false)
       el.addEventListener('touchmove', self.move, false)
@@ -280,8 +298,10 @@ vueFinger.install = function (Vue, options) {
   })
   Vue.directive('rotate', {
     bind (el, binding, vnode, oldVnode) {
-      self.config.rotate = function (e) {
-        binding.value.call(binding.value, e, el)
+      var args = binding.value.arg || {}
+      args.el = el
+      self.config.pinch = function (e) {
+        binding.value.methods.call(binding.value.methods, e, args)
       }
       el.addEventListener('touchstart', self.start, false)
       el.addEventListener('touchmove', self.move, false)
